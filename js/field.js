@@ -16,17 +16,17 @@ export class PerlinField {
         const offset = v2_scale(this.flow, time);
         const displace = value*this.displace;
         return (p) => {
-            let nx = this.noise.noise(
+            const nx = this.noise.noise(
                 p[0]*this.scale + offset[0]+1000,
                 p[1]*this.scale + offset[1]+1000,
                 time*this.evolution+1000,
             );
-            let ny = this.noise.noise(
+            const ny = this.noise.noise(
                 p[0]*this.scale + offset[0]+2000,
                 p[1]*this.scale + offset[1]+2000,
                 time*this.evolution+2000,
             );
-            let nz = this.noise.noise(
+            const nz = this.noise.noise(
                 p[0]*this.scale + offset[0]+3000,
                 p[1]*this.scale + offset[1]+3000,
                 time*this.evolution+3000,
@@ -44,12 +44,12 @@ export class SphericalField {
 
     getFunc() {
         return (p) => {
-            let len = Math.sqrt(
+            const len = Math.sqrt(
                 p[0]*p[0] + p[1]*p[1] + p[2]*p[2]
             ); // length of vector
-            let e = [p[0]/len, p[1]/len, p[2]/len]; // unit vector
-            let push = (this.r-len)*this.strength*0.01;
-            let pv = [e[0]*push, e[1]*push, e[2]*push];
+            const e = [p[0]/len, p[1]/len, p[2]/len]; // unit vector
+            const push = (this.r-len)*this.strength*0.01;
+            const pv = [e[0]*push, e[1]*push, e[2]*push];
             return [p[0]+pv[0], p[1]+pv[1], pv[2]];
         }
     }

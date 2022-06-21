@@ -58,8 +58,8 @@ function init() {
 
 function animate() {
     time += app.ticker.deltaMS/1000;
-    let audioData = audio.getAudio().slice(0, 8);
-    let input = audioData.reduce((a, b) => a + b, 0) / audioData.length / 200; // (3+Math.sin(time))/3.5;
+    const audioData = audio.getAudio().slice(0, 8);
+    const input = audioData.reduce((a, b) => a + b, 0) / audioData.length / 200; // (3+Math.sin(time))/3.5;
     form.pushField(perlinField.getFunc(input, time));
     form.pushField(sphericalField.getFunc());
     form.execute();

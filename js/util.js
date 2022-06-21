@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js';
 import {GlowFilter} from '@pixi/filter-glow';
 
 export function text(x, y, height, string, color) {
-  let ret = new PIXI.Text(string,
+  const ret = new PIXI.Text(string,
       { 
           fontFamily: 'Noto Sans Mono',
           fontSize: height,

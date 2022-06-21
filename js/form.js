@@ -17,7 +17,7 @@ export class Form {
         for (let i=0; i<=this.div[0]; i++) {
             this.circles[i] = new Array(this.div[1]+1);
             for(let j=0; j<=this.div[1]; j++) {
-                let circle = new PIXI.Graphics()
+                const circle = new PIXI.Graphics()
                     .beginFill(op.color)
                     .drawCircle(0, 0, op.size)
                     .endFill();
@@ -45,7 +45,7 @@ export class Form {
                 }
 
                 // Draw with 3d position in 2d coordinate.
-                let cvs = 1024 / (p[2] + 1024);
+                const cvs = 1024 / (p[2] + 1024);
                 this.circles[i][j].x = cvs*p[0];
                 this.circles[i][j].y = cvs*p[1];
             }

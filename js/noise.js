@@ -21,9 +21,9 @@ function fade(t) {
 function lerp(t, a, b) { return a + t * (b - a); }
 
 function grad(hash, x, y, z) {
-    let h = hash & 15;
-    let u = h<8 ? x : y;
-    let v = h<4 ? y : h==12||h==14 ? x : z;
+    const h = hash & 15;
+    const u = h<8 ? x : y;
+    const v = h<4 ? y : h==12||h==14 ? x : z;
     return ((h&1) == 0 ? u : -u) + ((h&2) == 0 ? v : -v);
 }
 
@@ -53,25 +53,25 @@ export class PerlinNoise extends Noise {
     constructor() {
         super();
         this.p = new Array(512);
-        for (let i = 0; i < 256; i++) this.p[256+i] = this.p[i] = PERMUTATION[i];
+        for (let i=0; i<256; i++) this.p[256+i] = this.p[i] = PERMUTATION[i];
     }
 
     noise(x, y, z) {
-        let xi = Math.floor(x) & 255;
-        let yi = Math.floor(y) & 255;
-        let zi = Math.floor(z) & 255;
+        const xi = Math.floor(x) & 255;
+        const yi = Math.floor(y) & 255;
+        const zi = Math.floor(z) & 255;
         x -= Math.floor(x);
         y -= Math.floor(y);
         z -= Math.floor(z);
-        let u = fade(x);
-        let v = fade(y);
-        let w = fade(z);
-        let A = this.p[xi]+yi;
-        let AA = this.p[A]+zi;
-        let AB = this.p[A+1]+zi;
-        let B = this.p[xi+1]+yi;
-        let BA = this.p[B]+zi;
-        let BB = this.p[B+1]+zi;
+        const u = fade(x);
+        const v = fade(y);
+        const w = fade(z);
+        const A = this.p[xi]+yi;
+        const AA = this.p[A]+zi;
+        const AB = this.p[A+1]+zi;
+        const B = this.p[xi+1]+yi;
+        const BA = this.p[B]+zi;
+        const BB = this.p[B+1]+zi;
       
         return lerp(w, lerp(v, lerp(u, grad(this.p[AA  ], x  , y  , z   ),
                                        grad(this.p[BA  ], x-1, y  , z   )),
